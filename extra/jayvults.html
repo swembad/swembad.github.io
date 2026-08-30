@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jayvaults countdown</title>
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="countdown.css" />
+  </head>
+  <body>
+    <h2 class="gabarito-mainfont">the jayvaults mass unfollowing countdown</h2>
+<div id="countdown">
+
+    <div class="time-unit">
+        <span id="days">00</span>
+        <p>days</p>
+    </div>
+
+    <div class="time-unit">
+        <span id="hours">00</span>
+        <p>hours</p>
+    </div>
+
+    <div class="time-unit">
+        <span id="minutes">00</span>
+        <p>minutes</p>
+    </div>
+
+    <div class="time-unit">
+        <span id="seconds">00</span>
+        <p>seconds</p>
+    </div>
+
+</div>
+  </body>
+</html>
+<script>
+  const tDate = new Date("2026-09-01T00:00:00-05:00").getTime();
+  const timer = setInterval(function () {
+    const now = new Date().getTime();
+    const distance = tDate - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("countdown").innerText = "countdown ended...";
+    }
+  }, 1000);
+</script>

@@ -1,0 +1,42 @@
+#countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: white;
+    font-family: "Alarm Clock", "Digital-7", monospace;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time-unit span {
+    color: rgb(255, 0, 0);
+    font-family: "Alarm Clock", "Digital-7", monospace;
+    font-size: clamp(4rem, 8vw, 8rem);
+    font-weight: normal;
+    line-height: 1;
+    letter-spacing: 0.05em;
+}
+
+.time-unit p {
+    color: rgb(255, 0, 0);
+    font-family: "Alarm Clock", "Digital-7", monospace;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    margin: 0.5rem 0 0;
+    text-transform: lowercase;
+}
+
+@font-face {
+    font-family: "Digital-7";
+    src: url("digital-7-mn.ttf") format("truetype");
+}
+
+#countdown,
+#countdown span,
+#countdown p {
+    font-family: "Digital-7", monospace;
+}
