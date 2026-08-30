@@ -5,6 +5,11 @@
     gap: 2rem;
     color: white;
     font-family: "Alarm Clock", "Digital-7", monospace;
+    background: rgb(22, 19, 27);
+    border-radius: 12px;
+    max-width: 600px;
+    justify-self: center;
+    padding: 20px;
 }
 
 .time-unit {
@@ -26,7 +31,7 @@
     color: rgb(255, 0, 0);
     font-family: "Alarm Clock", "Digital-7", monospace;
     font-size: clamp(0.8rem, 1.5vw, 1.2rem);
-    margin: 0.5rem 0 0;
+    margin: 0.12rem 0 0;
     text-transform: lowercase;
 }
 
@@ -39,4 +44,21 @@
 #countdown span,
 #countdown p {
     font-family: "Digital-7", monospace;
+}
+
+#countdown span,
+#countdown p {
+    text-shadow:
+        0 0 5px rgba(214, 21, 21, 0.8),
+        0 0 10px rgba(214, 21, 21, 0.6),
+        0 0 20px rgba(214, 21, 21, 0.4);
+}
+
+div {
+    text-align: center;
+}
+
+a {
+    color: white;
+    text-align: center;
 }

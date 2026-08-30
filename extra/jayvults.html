@@ -9,29 +9,32 @@
   </head>
   <body>
     <h2 class="gabarito-mainfont">the jayvaults mass unfollowing countdown</h2>
-<div id="countdown">
-
-    <div class="time-unit">
+    <div id="countdown">
+      <div class="time-unit">
         <span id="days">00</span>
         <p>days</p>
-    </div>
-
-    <div class="time-unit">
+      </div>
+      <div class="time-unit">
         <span id="hours">00</span>
         <p>hours</p>
-    </div>
-
-    <div class="time-unit">
+      </div>
+      <div class="time-unit">
         <span id="minutes">00</span>
         <p>minutes</p>
-    </div>
-
-    <div class="time-unit">
+      </div>
+      <div class="time-unit">
         <span id="seconds">00</span>
         <p>seconds</p>
+      </div>
     </div>
-
-</div>
+    <br>
+    <br>
+    <div>
+      <a href="https://twitch.tv/jayvaults" class="gabarito-mainfont">twitch.tv/jayvaults</a>
+      <br>
+      <br>
+      <img src="image.png" style="width: 250px">
+    </div>
   </body>
 </html>
 <script>
@@ -39,20 +42,20 @@
   const timer = setInterval(function () {
     const now = new Date().getTime();
     const distance = tDate - now;
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
+    const days = Math.max(Math.floor(distance / (1000 * 60 * 60 * 24)));
+    const hours = Math.max(Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+    ));
+    const minutes = Math.max(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+    const seconds = Math.max(Math.floor((distance % (1000 * 60)) / 1000));
+    document.getElementById("days").innerText = String(days).padStart(2, '0');
+    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
 
     if (distance < 0) {
       clearInterval(timer);
-      document.getElementById("countdown").innerText = "countdown ended...";
+      document.getElementById("countdown").innerText = "mass unfollowing starts now...";
     }
   }, 1000);
 </script>
