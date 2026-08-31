@@ -60,7 +60,8 @@ div {
 
 a {
     color: white;
-    text-align: center;
     font-size: clamp(2rem, 5vw, 3.25rem);
     text-size-adjust: auto;
+    display: block;
+    justify-self: center
 }
