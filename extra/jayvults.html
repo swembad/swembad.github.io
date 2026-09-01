@@ -27,15 +27,27 @@
         <p>seconds</p>
       </div>
     </div>
-    <br>
+    <br/>
     <div>
       <h3 class="gabarito-mainfont">how to participate</h3>
-      <p class="gabarito-secondaryfont">1. follow jayvaults if you haven't already<br>2. when the countdown hits 00:00:00:00 unfollow jayvaults</p>
-      <a href="https://twitch.tv/jayvaults" class="gabarito-mainfont">twitch.tv/jayvaults</a>
-      <br>
-      <br>
-      <br>
-      <img src="image.png" style="width: 250px;display:block;justify-self:center;">
+      <p class="gabarito-secondaryfont">
+        1. follow jayvaults if you haven't already<br />2. when the countdown
+        hits 00:00:00:00 unfollow jayvaults
+      </p>
+      <a href="https://twitch.tv/jayvaults" class="gabarito-mainfont"
+        >twitch.tv/jayvaults</a
+      >
+      <br/>
+      <br/>
+      <div id="followers">
+        <h2 id="follower-count" class="gabarito-mainfont" style="margin-top:0; margin-bottom:0; transition: color 0.2s">0</h2>
+        <h3 class="gabarito-secondaryfont" style="margin-top:0">followers</h3>
+        <p class="gabarito-secondaryfont">updates every 10 seconds</p>
+      </div>
+      <img
+        src="image.png"
+        style="width: 250px; display: block; justify-self: center"
+      />
     </div>
   </body>
 </html>
@@ -45,19 +57,66 @@
     const now = new Date().getTime();
     const distance = tDate - now;
     const days = Math.max(Math.floor(distance / (1000 * 60 * 60 * 24)));
-    const hours = Math.max(Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-    ));
-    const minutes = Math.max(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+    const hours = Math.max(
+      Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    );
+    const minutes = Math.max(
+      Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+    );
     const seconds = Math.max(Math.floor((distance % (1000 * 60)) / 1000));
-    document.getElementById("days").innerText = String(days).padStart(2, '0');
-    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+    document.getElementById("days").innerText = String(days).padStart(2, "0");
+    document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+    document.getElementById("minutes").innerText = String(minutes).padStart(
+      2,
+      "0",
+    );
+    document.getElementById("seconds").innerText = String(seconds).padStart(
+      2,
+      "0",
+    );
 
     if (distance < 0) {
       clearInterval(timer);
-      document.getElementById("countdown").innerText = "mass unfollowing starts now...";
+      document.getElementById("countdown").innerText =
+        "mass unfollowing starts now...";
     }
   }, 1000);
+
+  let previousFollowers = null;
+  async function updateFollowers() {
+    try {
+      const response = await fetch(
+        "https://api.twitch.tv/helix/channels/followers?broadcaster_id=721512078",
+        {
+          headers: {
+            "Client-ID": "ttgxrwl2bo094c4evbxquu3gizj4c3",
+            Authorization: "Bearer eelye1jkj0xcub7d5z01oqrzwb83jk",
+          },
+        }
+      );
+      const data = await response.json();
+      const newFollowers = data.total;
+      const followerCount = document.getElementById("follower-count");
+      followerCount.textContent = newFollowers.toLocaleString();
+
+      if (previousFollowers !== null) {
+        if (newFollowers > previousFollowers) {
+          followerCount.style.color = "green";
+        } else if (newFollowers < previousFollowers) {
+          followerCount.style.color = "red";
+        }
+
+        setTimeout(() => {
+          followerCount.style.color = "";
+        }, 2000);
+      }
+      previousFollowers = newFollowers;
+
+    } catch (error) {
+      console.error("Failed to fetch follower count:", error);
+    }
+  }
+  updateFollowers();
+
+  setInterval(updateFollowers, 10000);
 </script>
