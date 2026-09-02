@@ -1,3 +1,16 @@
+div {
+    text-align: center;
+}
+
+a {
+    color: white;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    -webkit-text-size-adjust: auto;
+    text-size-adjust: auto;
+    display: block;
+    justify-self: center
+}
+
 #countdown {
     display: flex;
     justify-content: center;
@@ -52,16 +65,4 @@
         0 0 5px rgba(214, 21, 21, 0.8),
         0 0 10px rgba(214, 21, 21, 0.6),
         0 0 20px rgba(214, 21, 21, 0.4);
-}
-
-div {
-    text-align: center;
-}
-
-a {
-    color: white;
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    text-size-adjust: auto;
-    display: block;
-    justify-self: center
 }
