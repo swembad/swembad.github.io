@@ -1,54 +1,93 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <style>
-        body {
-            background-color: rgb(24, 24, 24);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        img, video {
-            max-width: 100%;
-            max-height: 100vh;
-        }
+      body {
+        background-color: rgb(24, 24, 24);
+        margin: 0;
+        min-height: 100vh;
+      }
+      #media-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        gap: 12px;
+      }
+      img,
+      video {
+        max-width: 100%;
+        max-height: 90vh;
+      }
+      #sound-btn {
+        color: white;
+        padding: 10px 24px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(15, 15, 15, 0.9);
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="media-container"></div>
 
     <script>
-        async function loadMedia() {
-            const res = await fetch("https://image-proxy.difubit.workers.dev/?t=" + Date.now());
-            const url = (await res.text()).trim();
-            const container = document.getElementById("media-container");
+      async function loadMedia() {
+        const params = new URLSearchParams(window.location.search);
+        const wantsAudio = params.has("a");
 
-            const ext = url.split("?")[0].split(".").pop().toLowerCase();
-            const videoExts = ["mp4", "webm", "mov", "ogg"];
-            const imageExts = ["png", "jpg", "jpeg", "gif", "webp", "svg"];
+        const res = await fetch(
+          "https://image-proxy.difubit.workers.dev/?t=" + Date.now(),
+        );
+        const url = (await res.text()).trim();
+        const container = document.getElementById("media-container");
 
-            let el;
-            if (videoExts.includes(ext)) {
-                el = document.createElement("video");
-                el.src = url;
-                el.controls = true;
-                el.autoplay = true;
-                el.loop = true;
-                el.muted = false;
-            } else if (imageExts.includes(ext)) {
-                el = document.createElement("img");
-                el.src = url;
-            } else {
-                el = document.createElement("img");
-                el.src = url;
-            }
+        const ext = url.split("?")[0].split(".").pop().toLowerCase();
+        const videoExts = ["mp4", "webm", "mov", "ogg"];
+        const imageExts = ["png", "jpg", "jpeg", "gif", "webp", "svg"];
 
-            container.appendChild(el);
+        if (videoExts.includes(ext)) {
+          const el = document.createElement("video");
+          el.src = url;
+          el.controls = true;
+          el.loop = true;
+          el.playsInline = true;
+          container.appendChild(el);
+
+          if (wantsAudio) {
+            // ?a: unmuted
+            el.muted = false;
+            el.autoplay = false;
+          } else {
+            // default (no param)
+            el.muted = true;
+            el.autoplay = true;
+
+            const btn = document.createElement("button");
+            btn.id = "sound-btn";
+            btn.textContent = "Click to enable audio";
+            btn.onclick = () => {
+              el.muted = false;
+              el.play();
+              btn.remove();
+            };
+            container.appendChild(btn);
+          }
+        } else if (imageExts.includes(ext)) {
+          const el = document.createElement("img");
+          el.src = url;
+          container.appendChild(el);
+        } else {
+          const el = document.createElement("img");
+          el.src = url;
+          container.appendChild(el);
         }
+      }
 
-        loadMedia();
+      loadMedia();
     </script>
-</body>
+  </body>
 </html>
