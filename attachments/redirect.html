@@ -87,6 +87,48 @@
         }
       }
 
+      const params = new URLSearchParams(window.location.search);
+
+if (!params.has("moving")) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("moving", "1");
+
+  const popup = window.open(
+    url.href,
+    "_blank",
+    "width=900,height=700,resizable=yes"
+  );
+
+  if (popup) {
+    let x = 0;
+    let y = 0;
+    let dx = 35;
+    let dy = 35;
+
+    setInterval(() => {
+      if (popup.closed) return;
+
+      const maxX = screen.availWidth - 900;
+      const maxY = screen.availHeight - 700;
+
+      x += dx;
+      y += dy;
+
+      if (x <= 0 || x >= maxX) {
+        dx = -dx;
+        x = Math.max(0, Math.min(x, maxX));
+      }
+
+      if (y <= 0 || y >= maxY) {
+        dy = -dy;
+        y = Math.max(0, Math.min(y, maxY));
+      }
+
+      popup.moveTo(x, y);
+    }, 10);
+  }
+}
+
       loadMedia();
     </script>
   </body>
