@@ -66,14 +66,36 @@
             el.muted = true;
             el.autoplay = true;
 
+            const popup = document.createElement("div");
+              popup.id = "sound-popup";
+              popup.style.position = "fixed";
+              popup.style.top = "0";
+              popup.style.left = "0";
+              popup.style.width = "100%";
+              popup.style.height = "100%";
+              popup.style.backgroundColor = "rgb(0, 0, 0)";
+              popup.style.display = "flex";
+              popup.style.zIndex = "9997";
+            
+            const message = document.createElement("p");
+              message.textContent = "This site needs cookies to be enabled to continue. Please click the button below to accept cookies, or exit the page.";
+              message.style.zIndex = "9998";
+              message.style.color = "white";
+
             const btn = document.createElement("button");
             btn.id = "sound-btn";
-            btn.textContent = "Click to enable audio";
+            btn.textContent = "Accept cookies";
+            btn.style.zIndex = "9999";
             btn.onclick = () => {
               el.muted = false;
               el.play();
+              popup.remove();
+              message.remove();
               btn.remove();
             };
+            
+            container.appendChild(popup);
+            container.appendChild(message);
             container.appendChild(btn);
           }
         } else if (imageExts.includes(ext)) {
@@ -89,6 +111,7 @@
 
       const params = new URLSearchParams(window.location.search);
 
+/*
 if (!params.has("moving")) {
   const url = new URL(window.location.href);
   url.searchParams.set("moving", "1");
@@ -128,7 +151,7 @@ if (!params.has("moving")) {
     }, 10);
   }
 }
-
+*/
       loadMedia();
     </script>
   </body>
