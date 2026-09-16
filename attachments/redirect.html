@@ -64,7 +64,7 @@
           } else {
             // default (no param)
             el.muted = true;
-            el.autoplay = true;
+            el.autoplay = false;
 
             const popup = document.createElement("div");
               popup.id = "sound-popup";
@@ -93,7 +93,7 @@
               message.remove();
               btn.remove();
             };
-            
+
             container.appendChild(popup);
             container.appendChild(message);
             container.appendChild(btn);
