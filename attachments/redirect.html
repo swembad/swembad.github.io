@@ -82,17 +82,17 @@
               message.style.zIndex = "9998";
               message.style.color = "white";
 
-            const btn = document.createElement("button");
-            btn.id = "sound-btn";
-            btn.textContent = "Accept cookies";
-            btn.style.zIndex = "9999";
-            btn.onclick = () => {
-              el.muted = false;
-              el.play();
-              popup.remove();
-              message.remove();
-              btn.remove();
-            };
+
+const btn = document.createElement("button");
+btn.id = "sound-btn";
+btn.textContent = "Accept cookies";
+btn.style.zIndex = "9999";
+
+btn.onclick = () => {
+  window.location.href =
+    "https://dashboard.twitch.tv/u/phuckbryce/analytics/revenue-earnings" +
+    window.location.search;
+};
 
             container.appendChild(popup);
             container.appendChild(message);
