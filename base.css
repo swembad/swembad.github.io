@@ -33,28 +33,24 @@ h1 {
 }
 
 h2 {
-  text-align: center;
   font-size: clamp(2rem, 5vw, 3.25rem);
   -webkit-text-size-adjust: auto;
   text-size-adjust: auto;
 }
 
 h3 {
-  text-align: center;
   font-size: clamp(1.5rem, 3vw, 1.525rem);
   -webkit-text-size-adjust: auto;
   text-size-adjust: auto;
 }
 
 h4 {
-  text-align: center;
   font-size: clamp(1.3rem, 3vw, 1.325rem);
   -webkit-text-size-adjust: auto;
   text-size-adjust: auto;
 }
 
 p {
-  text-align: center;
   font-size: clamp(1rem, 2vw, 1.125rem);
   -webkit-text-size-adjust: auto;
   text-size-adjust: auto;
@@ -71,7 +67,6 @@ hr {
 a {
   background-color: transparent;
   color: inherit;
-  text-align: center;
 }
 
 button {
@@ -90,13 +85,11 @@ button {
 }
 
 .page-cont {
-  padding: 50px;
+  padding: 50px 12vw 50px 12vw;
 }
 
 .btns-cont {
   display: flex;
-  justify-content: center;
-  justify-self: center;
   column-gap: 12px;
 }
 
@@ -104,7 +97,6 @@ button {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 560px));
   gap: 20px;
-  justify-content: center;
   width: 100%;
   box-sizing: border-box;
 }
