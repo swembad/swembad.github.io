@@ -1,45 +1,47 @@
-const WORKER = "https://media-upload-worker.difubit.workers.dev/";
+document.addEventListener("DOMContentLoaded", () => {
+  const WORKER = "https://media-upload-worker.difubit.workers.dev/";
 
-document.getElementById("uploadBtn").onclick = async () => {
-  const file = document.getElementById("fileInput").files[0];
-  const statusF = document.getElementById("uploadStatus");
-  const url = document.getElementById("uploadURLField");
-  const copy = document.getElementById("copyUploadURL");
-  if (!file) {
-    statusF.textContent = "Please select a file to upload.";
-    return;
-  }
-
-  if (file.size > 25 * 1024 * 1024) {
-    statusF.textContent = "Maximum file size is 25MB.";
-    return;
-  }
-
-  statusF.textContent = "uploading...";
-  url.value = "";
-
-  try {
-    const response = await fetch(WORKER + "/upload", {
-      method: "POST",
-      headers: { "Content-Type": file.type },
-      body: file,
-    });
-
-    const result = await response.json();
-    if (!response.ok) {
-      throw new Error(result.error || "Upload failed");
+  document.getElementById("uploadBtn").onclick = async () => {
+    const file = document.getElementById("fileInput").files[0];
+    const statusF = document.getElementById("uploadStatus");
+    const url = document.getElementById("uploadURLField");
+    const copy = document.getElementById("copyUploadURL");
+    if (!file) {
+      statusF.textContent = "Please select a file to upload.";
+      return;
     }
 
-    url.value = result.url;
-    copy.disabled = false;
-    statusF.textContent = "Upload successful!";
-  } catch (error) {
-    statusF.textContent = error.message;
-  }
+    if (file.size > 25 * 1024 * 1024) {
+      statusF.textContent = "Maximum file size is 25MB.";
+      return;
+    }
 
-  copy.onclick = async () => {
-    await navigator.clipboard.writeText(url.value);
-    };
+    statusF.textContent = "uploading...";
+    url.value = "";
 
-    statusF.textContent = "Link copied!";
-};
+    try {
+      const response = await fetch(WORKER + "/upload", {
+        method: "POST",
+        headers: { "Content-Type": file.type },
+        body: file,
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error || "Upload failed");
+      }
+
+      url.value = result.url;
+      copy.disabled = false;
+      statusF.textContent = "Upload successful!";
+    } catch (error) {
+      statusF.textContent = error.message;
+    }
+
+    copy.onclick = async () => {
+      await navigator.clipboard.writeText(url.value);
+      };
+
+      statusF.textContent = "Link copied!";
+  };
+})
