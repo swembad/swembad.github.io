@@ -1,8 +1,17 @@
 /* base content */
+:root {
+  --text-main-color: #ffffff;
+  --text-secondary-color: #d3d3d3;
+}
+
+* {
+  color: var(--text-main-color);
+}
+
 html,
 body {
   background-color: #09080e;
-  margin: 0
+  margin: 0;
 }
 
 .gabarito-mainfont {
@@ -10,7 +19,6 @@ body {
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
-  color: #ffffff;
 }
 
 .gabarito-secondaryfont {
@@ -18,7 +26,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-  color: #ffffff;
+  color: var(--text-secondary-color);
 }
 
 h1 {
@@ -75,7 +83,6 @@ button {
   border: none;
   border-radius: 6px;
   font-size: 20px;
-  color: #ffffff;
 }
 
 /* elements */
