@@ -30,15 +30,16 @@ document.getElementById("uploadBtn").onclick = async () => {
       throw new Error(result.error || "Upload failed");
     }
 
-    url.value = result.value;
+    url.value = result.url;
     copy.disabled = false;
     statusF.textContent = "Upload successful!";
   } catch (error) {
     statusF.textContent = error.message;
   }
-};
 
-copy.onclick = async () => {
-  await navigator.clipboard.writeText(url.value);
+  copy.onclick = async () => {
+    await navigator.clipboard.writeText(url.value);
+    };
+
+    statusF.textContent = "Link copied!";
 };
-statusF.textContent = "Link copied!";
