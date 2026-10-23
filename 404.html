@@ -1,2 +1,90 @@
-<!--CondensedHTMLForLoadTime-->
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Attachment</title><style>body{margin:0;min-height:100vh;background:#111;display:flex;flex-direction:column;justify-content:center;align-items:center;color: white;}img,video{max-width:96vw;max-height:96vh;object-fit:contain;}p{color: white;font-family: Arial, sans-serif;}</style></head><body><div id="viewer"style="text-align:center;"><p>Loading attachment</p></div><a href="/attachments/"style="display:block;margin-top:20px;">upload your own images here</a><script>const WORKER="https://media-upload-worker.difubit.workers.dev";const prefix="/attachments/";const path=location.pathname;const filename=path.startsWith(prefix)?path.slice(prefix.length):"";const valid=/^[a-f0-9-]{36}\.(jpg|png|gif|webp|avif|mp4|webm|mov)$/i;const viewer=document.getElementById("viewer");if(!valid.test(filename)){viewer.textContent = "Attachment not found.";} else{const isVideo=/\.(mp4|webm|mov)$/i.test(filename);const media=document.createElement(isVideo?"video": "img");if(isVideo){media.controls=true;media.playsInline=true;}else{media.alt="Uploaded attachment";}media.src=`${WORKER}/media/${encodeURIComponent(filename)}`;media.onerror=()=>{viewer.textContent="Attachment could not be loaded.";};viewer.replaceChildren(media);}</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attachment</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #111;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      img,
+      video {
+        max-width: 96vw;
+        max-height: 96vh;
+        object-fit: contain;
+      }
+      p {
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewer" style="text-align: center"><p>Loading attachment</p></div>
+    <script>
+      const WORKER = "https://media-upload-worker.difubit.workers.dev";
+      const prefix = "/attachments/";
+      const path = location.pathname;
+      const filename = path.startsWith(prefix) ? path.slice(prefix.length) : "";
+      const viewer = document.getElementById("viewer");
+      const validMedia = /^[a-f0-9-]{36}\.(jpg|png|gif|webp|avif|mp4|webm|mov)$/i;
+      const validRedirect = /^[a-zA-Z0-9_-]{6,32}\.(jpg|png|gif|webp|avif)$/i;
+      async function loadAttachment() {
+        if (!validMedia.test(filename) && !validRedirect.test(filename)) {
+        viewer.textContent = "Attachment not found.";
+        return;
+      }
+
+        if (validRedirect.test(filename)) {
+            try {
+                const response = await fetch(
+                    `${WORKER}/redirect/${encodeURIComponent(filename)}`
+                );
+
+                if (response.ok) {
+                    const result = await response.json();
+
+                    if (
+                        result.destination &&
+                        ["https:", "http:"].includes(
+                            new URL(result.destination).protocol
+                        )
+                    ) {
+                        location.replace(result.destination);
+                        return;
+                    }
+                }
+            } catch (error) {
+                console.error("Redirect failed:", error);
+            }
+        }
+
+        if (validMedia.test(filename)) {
+            const isVideo = /\.(mp4|webm|mov)$/i.test(filename);
+            const media = document.createElement(isVideo ? "video" : "img");
+            if (isVideo) {
+            media.controls = true;
+            media.playsInline = true;
+            } else {
+            media.alt = "Uploaded attachment";
+            }
+            media.src = `${WORKER}/media/${encodeURIComponent(filename)}`;
+            media.onerror = () => {
+            viewer.textContent = "Attachment could not be loaded.";
+            };
+            viewer.replaceChildren(media);
+        }
+      }
+
+      loadAttachment();
+    </script>
+  </body>
+</html>
