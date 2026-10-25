@@ -5,30 +5,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="text/javascript" src="./redirGenUrl.js"></script>
         <script type="text/javascript" src="./uploadGenUrl.js"></script>
-        <!-- <link rel="stylesheet" type="text/css" href="../base.css"> -->
+        <link rel="stylesheet" type="text/css" href="../base.css">
     </head>
     <body>
+        <div class="page-cont">
         <header>
-            <h1>attachments</h1>
+            <h1 class="gabarito-mainfont1">attachments</h1>
         </header>
         <main>
-            <h2>upload your media here</h2>
-            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/gif,image/webp,image/avif,video/mp4,video/webm,video/quicktime">
-            <button id="uploadBtn">upload</button>
-            <p id="uploadStatus"></p>
-            <input id="uploadURLField" readonly placeholder="your uploaded url will appear here">
-            <button id="copyUploadURL" disabled>copy url</button>
-            
-            <h2>generate your redirect here</h2>
-            <input type="url" id="redirectInputField" placeholder="enter the URL you want to redirect to">
-            <button id="redirectURLButton">generate</button>
-            <p id="redirectStatus"></p>
-            <input type="text" id="redirectURLField" readonly placeholder="your generated redirect url will appear here">
-            <button id="copyRedirectURL" disabled>copy url</button>
-            <h2>info</h2>
-            <p>to use this make a pastebin account and create a new paste. in that paste put in 1 URL only, any text that is not the URL will make the redirect invalid.<br><br>if you want to change the redirect go back to your pastebin and change the url to the new one.<br><br>this allows you to re-use the same redirect link for different urls.</p>
-            <h2>generate url</h2>
-            <h3>instructions</h3>you can enter in any website you want into your pastebin paste, such as a tiktok url or you can use it as a way to host images & videos.<br><br>keep in mind you have to change the contents of the pastebin paste to your new link when you want to change the content displayed.</p>
+            <h2 class="gabarito-mainfont1">upload your media here</h2>
+            <div class="elements-cont">
+                <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,image/gif,image/webp,image/avif,video/mp4,video/webm,video/quicktime">
+                <button id="uploadBtn">upload</button>
+                <p id="uploadStatus" class="gabarito-secondaryfont1"></p>
+                <input id="uploadURLField" readonly placeholder="your uploaded url will appear here">
+                <button id="copyUploadURL" disabled>copy url</button>
+            </div>
+                <h2 class="gabarito-mainfont1">generate your redirect here</h2>
+            <div class="elements-cont">
+                <input type="url" id="redirectInputField" placeholder="enter the URL you want to redirect to">
+                <button id="redirectURLButton">generate</button>
+                <p id="redirectStatus"></p>
+                <input type="text" id="redirectURLField" readonly placeholder="your generated redirect url will appear here">
+                <button id="copyRedirectURL" disabled>copy url</button>
+            </div>
+            <h2 class="gabarito-mainfont1">JSON chatterino image uploader config</h2>
+            <div class="elements-cont">
+            <pre><code class="gabarito-mainfont2">{
+            "Body": "MultipartFormData",
+            "DeletionURL": "",
+            "FileFormName": "file",
+            "Name": "Chatterino Image Uploader Settings",
+            "RequestMethod": "POST",
+            "RequestURL": "https://media-upload-worker.difubit.workers.dev/upload",
+            "URL": "{viewerUrl}",
+            "Version": "1.0.0"
+}</code></pre>
+            </div>
         </main>
+        </div>
     </body>
 </html>

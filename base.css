@@ -1,7 +1,26 @@
 /* base content */
 :root {
+  color-scheme: dark;
+  --page-background-color: #09080e;
+  --page-header-background-color: #272435;
+  --content-separator-color: #23262e;
   --text-main-color: #ffffff;
   --text-secondary-color: #d3d3d3;
+  --elements-background-color1: #100f18;
+  --elements-background-color2: #14111f;
+  --elements-background-hover-color1: #2c293b;
+  --elements-accents-color1: #252135;
+  --elements-margin-block-end-mainfont1: 24px;
+  --elements-margin-block-end-mainfont2: 12px;
+  --elements-margin-block-start-mainfont1: 12px;
+  --elements-margin-block-start-mainfont2: 6px;
+  --elements-margin-block-end-secondaryfont1: 12px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
 }
 
 * {
@@ -10,23 +29,47 @@
 
 html,
 body {
-  background-color: #09080e;
+  background-color: var(--page-background-color);
   margin: 0;
 }
 
-.gabarito-mainfont {
+.gabarito-mainfont1 {
   font-family: "Gabarito", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+  color: var(--text-primary-color);
+  display: block;
+  margin-block-start: var(--elements-margin-block-start-mainfont1);
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--elements-margin-block-end-mainfont1);
 }
 
-.gabarito-secondaryfont {
+.gabarito-mainfont2 {
+  font-family: "Gabarito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: var(--text-primary-color);
+  display: block;
+  margin-block-start: var(--elements-margin-block-start-mainfont2);
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--elements-margin-block-end-mainfont2);
+}
+
+.gabarito-secondaryfont1 {
   font-family: "Gabarito", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   color: var(--text-secondary-color);
+  display: block;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--elements-margin-block-end-secondaryfont1);
 }
 
 h1 {
@@ -34,10 +77,6 @@ h1 {
   font-size: clamp(3rem, 10vw, 9.375rem);
   -webkit-text-size-adjust: auto;
   text-size-adjust: auto;
-  margin-block-start: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  margin-block-end: 0;
 }
 
 h2 {
@@ -65,7 +104,7 @@ p {
 }
 
 hr {
-  border: 0.1em solid #23262e;
+  border: 0.1em solid var(--content-separator-color);
   display: block;
   width: 90%;
   margin-left: auto;
@@ -78,16 +117,36 @@ a {
 }
 
 button {
-  background-color: #100f18;
+  background-color: var(--elements-background-color1);
   cursor: pointer;
-  border: none;
+  width: 10%;
   border-radius: 6px;
   font-size: 20px;
+  padding: 5px;
+  border: var(--elements-accents-color1), 1px solid;
 }
+
+.file-input::file-selector-button {
+  background-color: var(--elements-background-color1);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 20px;
+  padding: 5px;
+  border: var(--elements-accents-color1), 1px solid;
+}
+
+input {
+  background-color: var(--elements-background-color1);
+  width: 40%;
+  border-radius: 6px;
+  padding: 10px;
+  border: none;
+}
+
 
 /* elements */
 .h-top-banner {
-  background-color: #272435;
+  background-color: var(--page-header-background-color);
   padding: 2px;
 }
 
@@ -100,17 +159,33 @@ button {
   column-gap: 12px;
 }
 
+.elements-cont {
+  padding: 5px;
+  background-color: var(--elements-background-color2);
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--elements-margin-block-end2);
+}
+
 .vid-parent {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 560px));
   gap: 20px;
   width: 100%;
   box-sizing: border-box;
+  margin-block-start: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin-block-end: var(--elements-margin-block-end2);
 }
 
 .vid-cont {
   padding: 5px;
-  background-color: #14111f;
+  background-color: var(--elements-background-color2);
   border-radius: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -126,7 +201,7 @@ button {
 }
 
 /* effects/animation (hover, etc) */
-button:hover {
-  background-color: #2c293b;
+button:hover, .file-input::file-selector-button:hover {
+  background-color: var(--elements-background-hover-color1);
   transition: background-color 0.2s ease-in;
 }

@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="public, max-age=36000">
+    <meta http-equiv="Expires" content="36000">
     <title>Attachment</title>
     <style>
       body {
@@ -58,7 +60,7 @@
                             new URL(result.destination).protocol
                         )
                     ) {
-                        location.replace(result.destination);
+                        location.assign(result.destination);
                         return;
                     }
                 }
@@ -85,6 +87,7 @@
       }
 
       loadAttachment();
+
     </script>
   </body>
 </html>
