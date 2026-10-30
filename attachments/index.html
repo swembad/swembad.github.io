@@ -6,6 +6,7 @@
         <script type="text/javascript" src="./redirGenUrl.js"></script>
         <script type="text/javascript" src="./uploadGenUrl.js"></script>
         <link rel="stylesheet" type="text/css" href="../base.css">
+        <title>attachments - swembad</title>
     </head>
     <body>
         <div class="page-cont">
@@ -16,18 +17,20 @@
             <h2 class="gabarito-mainfont1">upload your media here</h2>
             <div class="elements-cont">
                 <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,image/gif,image/webp,image/avif,video/mp4,video/webm,video/quicktime">
-                <button id="uploadBtn">upload</button>
-                <p id="uploadStatus" class="gabarito-secondaryfont1" style="margin-left:2px"></p>
+                <button id="uploadBtn" style="margin-top: 6px">upload</button>
+                <p id="uploadStatus" class="gabarito-secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
+                <br>
                 <input id="uploadURLField" readonly placeholder="your uploaded url will appear here">
-                <button id="copyUploadURL" disabled>copy url</button>
+                <button id="copyUploadURL" disabled style="margin-top: 6px">copy url</button>
             </div>
                 <h2 class="gabarito-mainfont1">generate your redirect here</h2>
             <div class="elements-cont">
                 <input type="url" id="redirectInputField" placeholder="enter the URL you want to redirect to">
-                <button id="redirectURLButton">generate</button>
-                <p id="redirectStatus" class="gabarito-secondaryfont1" style="margin-left:2px"></p>
+                <button id="redirectURLButton" style="margin-top: 6px">generate</button>
+                <p id="redirectStatus" class="gabarito-secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
+                <br>
                 <input type="text" id="redirectURLField" readonly placeholder="your generated redirect url will appear here">
-                <button id="copyRedirectURL" disabled>copy url</button>
+                <button id="copyRedirectURL" disabled style="margin-top: 6px">copy url</button>
             </div>
             <h2 class="gabarito-mainfont1">JSON chatterino image uploader config</h2>
             <div class="elements-cont">
