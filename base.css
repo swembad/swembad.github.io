@@ -39,6 +39,8 @@ table {
 	border-spacing: 0;
 }
 /* base content */
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@400;600;700&display=swap');
+
 :root {
   color-scheme: dark;
   --page-background-color: #09080e;
@@ -47,6 +49,7 @@ table {
   --content-separator-color: #23262e;
   --text-main-color: #ffffff;
   --text-secondary-color: #d3d3d3;
+  --font-family: "Stack Sans Headline", sans-serif;
   /* NAVBAR */
 	--navbar-background-color: #ffffff00;
   --navbar-breadcrumbs-background-color: #272435c4;
@@ -59,10 +62,14 @@ table {
   --elements-background-color1: #100f18;
   --elements-background-color2: #14111f;
   --elements-background-color3: #29233d;
+  --elements-background-color4: #000000;
+  --elements-background-transparent-color1: linear-gradient(#413177, #413177,#29233d31);
   --elements-background-hover-color1: #2c293b;
   --elements-accents-color1: #252233;
   --elements-accents-color2: #3a3647;
+  --elements-accents-color3: #7a4aff;
   --elements-box-shadow-color1: #00000062;
+  --elements-box-shadow-color2: #000000;
   --elements-margin-block-end-h1: 24px;
   --elements-margin-block-end-h2: 12px;
   --elements-margin-block-end-p: 8px;
@@ -74,7 +81,7 @@ table {
   --elements-margin-top-h4: 10px;
   --buttons-min-width1: 3.0cm;
   --buttons-min-height1: 0.9cm;
-  --buttons-font-size1: clamp(1rem, 2vw, 1.125rem);
+  --font-size1: clamp(1.1rem, 2.3vw, 1.325rem);
   --input-width1: 0;
 }
 @media (prefers-color-scheme: light) {
@@ -84,6 +91,7 @@ table {
 }
 * {
   border: 0;
+  transition: all 0.3s ease-out;
   color: var(--text-main-color);
 }
 html,
@@ -91,8 +99,8 @@ body {
   margin: 0;
   background-color: var(--page-background-color);
 }
-.gabarito-mainfont1 {
-  font-family: "Gabarito", sans-serif;
+.mainfont1 {
+  font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
@@ -104,8 +112,8 @@ body {
   margin-inline-end: 0;
   color: var(--text-main-color);
 }
-.gabarito-mainfont2 {
-  font-family: "Gabarito", sans-serif;
+.mainfont2 {
+  font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -117,8 +125,8 @@ body {
   margin-inline-end: 0;
   color: var(--text-main-color);
 }
-.gabarito-secondaryfont1 {
-  font-family: "Gabarito", sans-serif;
+.secondaryfont1 {
+  font-family: var(--font-family);
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -138,21 +146,21 @@ h1 {
   margin-block-end: var(--elements-margin-block-end-h1);
 }
 h2 {
-  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-size: clamp(2.3rem, 6vw, 3.25rem);
   margin-block-start: var(--elements-margin-block-start-h2);
   margin-block-end: var(--elements-margin-block-end-h2);
   margin-top: var(--elements-margin-top-h2);
 }
 h3 {
-  font-size: clamp(1.5rem, 3vw, 1.525rem);
+  font-size: clamp(1.9rem, 4vw, 2.125rem);
   margin-top: var(--elements-margin-top-h3);
 }
 h4 {
-  font-size: clamp(1.3rem, 3vw, 1.325rem);
+  font-size: clamp(1.6rem, 3.2vw, 1.525rem);
   margin-top: var(--elements-margin-top-h4);
 }
 p {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-size: var(--font-size1);
   word-spacing: normal;
   line-height: 26px;
   margin-block-start: var(--elements-margin-block-start-p);
@@ -167,8 +175,9 @@ button {
   cursor: pointer;
   border-radius: 6px;
   padding: 5px;
+  transition: all 0.2s;
   background-color: var(--elements-background-color1);
-  font-size: var(--buttons-font-size1);
+  font-size: var(--font-size1);
   min-width: var(--buttons-min-width1);
   min-height: var(--buttons-min-height1);
   outline: 1px solid var(--elements-accents-color1);
@@ -177,8 +186,9 @@ button {
   cursor: pointer;
   border-radius: 6px;
   padding: 5px;
+  border: 0;
   background-color: var(--elements-background-color1);
-  font-size: var(--buttons-font-size1);
+  font-size: var(--font-size1);
   min-width: var(--buttons-min-width1);
   min-height: var(--buttons-min-height1);
   outline: 1px solid var(--elements-accents-color1);
@@ -188,13 +198,33 @@ input {
   padding: 5px;
   width: 100%;
   box-sizing: border-box;
+  font-size: var(--font-size1);
   min-height: var(--buttons-min-height1);
   background-color: var(--elements-background-color1);
   outline: 1px solid var(--elements-accents-color1);
 }
+input[type="checkbox"] {
+  width: 35px;
+  height: 35px;
+  border-radius: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  border: 1px solid var(--elements-accents-color2);
+  background-color: var(--elements-background-color1);
+}
+input[type="checkbox"]:checked {
+  background-color: var(--elements-accents-color3);
+}
 code {
+  font-size: var(--font-size1);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
+}
+hr {
+  width: 100%;
+  height: 1px;
+  background-color: var(--elements-accents-color2);
 }
 /* navbar */
 .t-nav-bar {
@@ -264,6 +294,22 @@ code {
   color: var(--navbar-buttons-hover-text-color);
 }
 /* elements */
+.hideSite {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  position: fixed;
+  visibility: hidden;
+  inset: 0;
+  opacity: 0.9;
+  z-index: 9999999;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  font-size: var(--font-size1);
+  background-color: var(--elements-background-color4);
+}
 .page-cont {
   padding: 20px 12vw 50px 12vw;
   box-sizing: border-box;
@@ -283,6 +329,7 @@ code {
 }
 .btns-cont {
   display: flex;
+  width: auto;
   column-gap: 12px;
   box-sizing: border-box;
 }
@@ -325,7 +372,9 @@ code {
 }
 /* effects/animation (hover, etc) */
 button:hover, .file-input::file-selector-button:hover {
-  transition: background-color 0.2s ease-in;
+    outline: 1px solid color-mix(in srgb,
+    var(--elements-accents-color2),
+    white 20%);
   background-color: var(--elements-background-hover-color1);
 }
 /* mobile sizing */

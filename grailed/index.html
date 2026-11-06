@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="./grailed-randomizer.js" defer></script>
+    <script type="text/javascript" src="twitch-chat.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="../base.css" />
+    <link rel="stylesheet" type="text/css" href="grailed.css" />
+    <title>grailed roulette - swembad</title>
+  </head>
+  <body>
+    <div class="page-cont" style="padding: 20px 2vw 50px 2vw">
+      <header>
+        <h1 class="mainfont1">grailed roulette</h1>
+      </header>
+      <main>
+        <div class="grailed-elems">
+          <div class="board" data-board="streamer">
+            <div class="elem-grid-cont">
+              <div class="grid-element" data-slot="shirt">
+                <p class="mainfont1">SHIRT</p>
+              </div>
+              <div class="grid-element" data-slot="pants">
+                <p class="mainfont1">PANTS</p>
+              </div>
+              <div class="grid-element" data-slot="shoes">
+                <p class="mainfont1">SHOES</p>
+              </div>
+              <div class="grid-element" data-slot="accessory">
+                <p class="mainfont1">ACCESSORY 1</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="board" data-board="chat" data-optional hidden>
+            <div class="elem-grid-cont">
+              <div class="grid-element" data-slot="shirt">
+                <p class="mainfont1">SHIRT</p>
+              </div>
+              <div class="grid-element" data-slot="pants">
+                <p class="mainfont1">PANTS</p>
+              </div>
+              <div class="grid-element" data-slot="shoes">
+                <p class="mainfont1">SHOES</p>
+              </div>
+              <div class="grid-element" data-slot="accessory">
+                <p class="mainfont1">ACCESSORY 1</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-column">
+            <div
+              id="twitch-chat"
+              data-channel="bradygoo"
+              data-height="600"
+            ></div>
+            <hr>
+            <button
+              data-action="toggle-versus"
+              data-label-off="vs chat: off"
+              data-label-on="vs chat: on"
+            >
+              vs chat: off
+            </button>
+            <div class="gr-controls" data-for="streamer"></div>
+            <hr>
+            <div class="gr-controls" data-for="chat" hidden></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

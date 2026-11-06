@@ -11,30 +11,30 @@
     <body>
         <div class="page-cont">
         <header>
-            <h1 class="gabarito-mainfont1">attachments</h1>
+            <h1 class="mainfont1">attachments</h1>
         </header>
         <main>
-            <h2 class="gabarito-mainfont1">upload your media here</h2>
+            <h2 class="mainfont1">upload your media here</h2>
             <div class="elements-cont">
                 <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,image/gif,image/webp,image/avif,video/mp4,video/webm,video/quicktime">
                 <button id="uploadBtn" style="margin-top: 6px">upload</button>
-                <p id="uploadStatus" class="gabarito-secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
+                <p id="uploadStatus" class="secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
                 <br>
                 <input id="uploadURLField" readonly placeholder="your uploaded url will appear here">
                 <button id="copyUploadURL" disabled style="margin-top: 6px">copy url</button>
             </div>
-                <h2 class="gabarito-mainfont1">generate your redirect here</h2>
+                <h2 class="mainfont1">generate your redirect here</h2>
             <div class="elements-cont">
                 <input type="url" id="redirectInputField" placeholder="enter the URL you want to redirect to">
                 <button id="redirectURLButton" style="margin-top: 6px">generate</button>
-                <p id="redirectStatus" class="gabarito-secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
+                <p id="redirectStatus" class="secondaryfont1" style="margin-left:2px;margin-top:6px"></p>
                 <br>
                 <input type="text" id="redirectURLField" readonly placeholder="your generated redirect url will appear here">
                 <button id="copyRedirectURL" disabled style="margin-top: 6px">copy url</button>
             </div>
-            <h2 class="gabarito-mainfont1">JSON chatterino image uploader config</h2>
+            <h2 class="mainfont1">JSON chatterino image uploader config</h2>
             <div class="elements-cont">
-            <pre><code class="gabarito-mainfont2">{
+            <pre><code class="mainfont2">{
             "Body": "MultipartFormData",
             "DeletionURL": "",
             "FileFormName": "file",
@@ -45,6 +45,12 @@
             "Version": "1.0.0"
 }</code></pre>
             </div>
+            <br>
+            <p class="secondaryfont1">beta - v1.0.0</p>
+            <br>
+            <p class="secondaryfont1">media & redirects uploaded are automatically deleted after 1 day, they are <u>not</u> retrievable after this 1 day period</p>
+            <br>
+            <p class="secondaryfont1">created by swembad, contact me on discord @jasontheincinerator for any questions, help & more</p>
         </main>
         </div>
     </body>

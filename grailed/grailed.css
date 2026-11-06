@@ -1,0 +1,190 @@
+.grailed-elems {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  gap: 12px;
+  justify-content: center;
+  align-items: start;
+}
+.elem-grid-cont {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border-radius: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 10px;
+  row-gap: 12px;
+  outline: 1px solid var(--elements-accents-color2);
+  background-color: var(--elements-background-color2);
+}
+.grid-element {
+  height: auto;
+  display: flex;
+  position: relative;
+  border-radius: 20px;
+  padding: 5px;
+  transition: all 0.2s;
+  border: 0;
+  flex-direction: column;
+  box-shadow: 0 4px 2px var(--elements-box-shadow-color1);
+  outline: 1px solid var(--elements-accents-color2);
+  background: var(--elements-background-transparent-color1);
+}
+.grid-image {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  border-radius: 12px;
+  margin-bottom: 9px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.elem-grid-cont .grid-element:hover {
+  scale: 1.02;
+  outline: 2px solid
+    color-mix(in srgb, var(--elements-accents-color2), #ffffff 20%);
+}
+.board {
+  flex: 1 1 0;
+  width: max-content;
+  min-width: 0;
+}
+.side-column {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 29%;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 24px;
+  outline: 1px solid var(--elements-accents-color2);
+  background: var(--elements-background-color2);
+
+}
+#twitch-chat {
+  display: block;
+  position: relative;
+  margin-top: 1px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#twitch-chat * {
+  box-sizing: border-box;
+}
+#twitch-chat #tc-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+#twitch-chat #tc-bar form {
+  display: flex;
+  gap: 8px;
+  flex: 1 1 220px;
+  min-width: 0;
+}
+#twitch-chat #tc {
+  display: block;
+  width: 100%;
+  height: 600px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 0;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  color: #efeff1;
+  font-family: inherit;
+  font-size: 23px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  scrollbar-width: thin;
+  outline: 1px solid var(--elements-accents-color2);
+  background: var(--elements-background-color1);
+  scrollbar-color: var(--elements-accents-color2) transparent;
+}
+#twitch-chat #tc #tc-msg,
+#twitch-chat #tc #tc-user,
+#twitch-chat #tc #tc-msg a {
+  font-size: 23px;
+  line-height: 1.5;
+}
+#twitch-chat #tc #tc-msg {
+  display: block;
+  padding: 5px 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  border-bottom: 1px solid var(--elements-accents-color1)
+}
+#twitch-chat #tc #tc-user {
+  font-size: var(--font-size1);
+}
+#twitch-chat #tc #tc-msg a {
+  color: #bf94ff;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+#twitch-chat #tc #tc-msg a:hover {
+  color: #d6b8ff;
+}
+#twitch-chat #tc #tc-note {
+  color: #adadb8;
+  line-height: 1.5;
+  padding: 4px 0;
+}
+.budget-cont {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  gap: 12px;
+  margin-top: 12px;
+  justify-content: start;
+}
+.total-cont {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  gap: 12px;
+  justify-content: center;
+}
+.filter-cont {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  gap: 6px;
+  margin-bottom: 10px;
+  grid-template-columns: 18em auto;
+  grid-auto-flow: row;
+}
+@keyframes pop {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+.grid-element.gr-enter { animation: pop 0.35s ease-out; }
+@media (max-width: 1718px) {
+  .grailed-elems {
+    flex-direction: column;
+  }
+  .board {
+    width: auto;
+  }
+  .side-column {
+    width: 100%;
+  }
+}
+@media (max-width: 596px) {
+  .elem-grid-cont {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1042px) {
+}
