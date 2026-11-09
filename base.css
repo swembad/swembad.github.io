@@ -56,8 +56,11 @@ table {
 	--navbar-outline-color: #c2c8ce;
 	--navbar-buttons-hover-background-color: #e6eaf0;
 	--navbar-buttons-hover-text-color: #4e4e4e;
-	--navbar-child-width: calc(100% - 8px);
+	--navbar-child-width: 100%;
 	--navbar-column-gap: 8px;
+  /* FOOTER */
+  --footer-accents-color1: #100f1a;
+  --footer-accents-color2: #292146;
   /* ELEMENTS */
   --elements-background-color1: #100f18;
   --elements-background-color2: #14111f;
@@ -66,7 +69,7 @@ table {
   --elements-background-transparent-color1: linear-gradient(#413177, #413177,#29233d31);
   --elements-background-hover-color1: #2c293b;
   --elements-accents-color1: #252233;
-  --elements-accents-color2: #3a3647;
+  --elements-accents-color2: #4c4a5388;
   --elements-accents-color3: #7a4aff;
   --elements-box-shadow-color1: #00000062;
   --elements-box-shadow-color2: #000000;
@@ -226,6 +229,16 @@ hr {
   height: 1px;
   background-color: var(--elements-accents-color2);
 }
+footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60px 12vw 50px 12vw;
+  outline: 1px var(--elements-accents-color2) solid;
+  background-image: linear-gradient(to top, var(--footer-accents-color1), var(--footer-accents-color2));
+}
 /* navbar */
 .t-nav-bar {
   width: 100%;
@@ -243,6 +256,7 @@ hr {
 	display: flex;
 	list-style: none;
 	background: none;
+  box-sizing: border-box;
 	font-size: clamp(1rem, 1.9vw, 3.5rem);
   width: var(--navbar-child-width);
 }
@@ -269,6 +283,7 @@ hr {
 	background: none;
 	flex-wrap: wrap;
 	justify-content: start;
+  box-sizing: border-box;
 	font-size: clamp(1rem, 1.9vw, 3.5rem);
   width: var(--navbar-child-width);
   column-gap: var(--navbar-column-gap);
@@ -294,24 +309,9 @@ hr {
   color: var(--navbar-buttons-hover-text-color);
 }
 /* elements */
-.hideSite {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  position: fixed;
-  visibility: hidden;
-  inset: 0;
-  opacity: 0.9;
-  z-index: 9999999;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  font-size: var(--font-size1);
-  background-color: var(--elements-background-color4);
-}
 .page-cont {
-  padding: 20px 12vw 50px 12vw;
+  padding: 20px 12vw 340px 12vw;
+  margin-inline: auto;
   box-sizing: border-box;
 }
 .h-top-banner {
@@ -387,6 +387,7 @@ button:hover, .file-input::file-selector-button:hover {
 		display: flex;
 		list-style: none;
 		background: none;
+    box-sizing: border-box;
 		font-size: clamp(2rem, 2.9vw, 4.5rem);
     width: var(--navbar-child-width);
 	}
@@ -398,6 +399,7 @@ button:hover, .file-input::file-selector-button:hover {
 		column-gap: var(--navbar-column-gap);
 		flex-wrap: wrap;
 		justify-content: start;
+    box-sizing: border-box;
 		font-size: clamp(2rem, 2.9vw, 4.5rem);
     width: var(--navbar-child-width);
 	}
@@ -412,6 +414,7 @@ button:hover, .file-input::file-selector-button:hover {
 		display: flex;
 		list-style: none;
 		background: none;
+    box-sizing: border-box;
 		font-size: clamp(1.5rem, 2.4vw, 4rem);
     width: var(--navbar-child-width);
 	}
@@ -422,6 +425,7 @@ button:hover, .file-input::file-selector-button:hover {
 		background: none;
 		flex-wrap: wrap;
 		justify-content: start;
+    box-sizing: border-box;
 		font-size: clamp(1.5rem, 2.4vw, 4rem);
     column-gap: var(--navbar-column-gap);
     width: var(--navbar-child-width);
@@ -437,6 +441,7 @@ button:hover, .file-input::file-selector-button:hover {
 		display: flex;
 		list-style: none;
 		background: none;
+    box-sizing: border-box;
 		font-size: clamp(2.3rem, 3.2vw, 4.8rem);
     width: var(--navbar-child-width);
 	}
@@ -447,6 +452,7 @@ button:hover, .file-input::file-selector-button:hover {
 		background: none;
 		flex-wrap: wrap;
 		justify-content: start;
+    box-sizing: border-box;
 		font-size: clamp(2.3rem, 3.2vw, 4.8rem);
     column-gap: var(--navbar-column-gap);
     width: var(--navbar-child-width);
@@ -462,6 +468,7 @@ button:hover, .file-input::file-selector-button:hover {
 		display: flex;
 		list-style: none;
 		background: none;
+    box-sizing: border-box;
 		font-size: clamp(1.4rem, 1.2vw, 1.6rem);
     width: var(--navbar-child-width);
 	}
@@ -472,6 +479,7 @@ button:hover, .file-input::file-selector-button:hover {
 		background: none;
 		flex-wrap: wrap;
 		justify-content: start;
+    box-sizing: border-box;
 		font-size: clamp(1.4rem, 1.2vw, 1.6rem);
     column-gap: var(--navbar-column-gap);
     width: var(--navbar-child-width);
